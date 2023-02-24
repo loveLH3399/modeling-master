@@ -36,23 +36,23 @@ for loop in range(n_trials):
     x=[0]
     y=[0]
     threshold_reached = False
-    counter = 0
+    counter = 0 # 计数器；The counter variable is incremented by 1
     while not threshold_reached and counter<max_n_step:
         d_x = alpha*(b[0] + 2*w_p*x[-1] - w_m*y[-1]) + std_noise*random.randn()
         d_y = alpha*(b[1] + 2*w_p*y[-1] - w_m*x[-1]) + std_noise*random.randn()
-        x.append(theta*x[-1] + d_x)
+        x.append(theta*x[-1] + d_x) # add an element to the end of a list
         y.append(theta*y[-1] + d_y)
         x[-1] = maximum(0,x[-1]) # threshold at zero
         y[-1] = maximum(0,y[-1]) # threshold at zero
         if maximum(x[-1],y[-1])>=threshold:
             threshold_reached = True
         counter += 1    
-    rt.append(counter)
-    accuracy += (x[-1]>y[-1])    
+    rt.append(counter)# reaction time # rt存储所有实验的counter
+    accuracy += (x[-1]>y[-1]) # the proportion of trials where x was higher than y
     too_late += (counter>=max_n_step)
 
 # plot final trajectory
-f, axarr = plt.subplots(nrows = 2, ncols = 1)
+f, axarr = plt.subplots(nrows = 2, ncols = 1) #Note that axarr is just a variable name and can be changed to any other valid variable name. The important thing is that it holds a 2D array of subplots, which can be indexed using square brackets to access individual subplots.
 axarr[0].plot(range(len(x)),x,"ko-", range(len(y)),y,"k--")
 axarr[0].set_title("Random trajectory")
 #axarr[0].set_xlabel("Time")
