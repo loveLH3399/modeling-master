@@ -17,7 +17,7 @@ low, high = -1, 2
 low_rbf, high_rbf = -3, 3
 font_size = 10
 
-def conv(x, y, sign = 1, list = range(len(slope))):
+def conv(x, y, sign = 1, list = range(len(slope))): # 一个判断点 (x, y) 是否在一些直线所围成的多边形内部的函数
     inside = True
     for i in list:
         if sign*(slope[i]*x + intercept[i] - y) > 0:
@@ -31,7 +31,7 @@ def plotlines():
         plt.plot(x, y, color = "black")
 
 def rbf(x,y,cen_x,cen_y):
-    return np.exp(-((x-cen_x)**2 + (y-cen_y)**2))
+    return np.exp(-((x-cen_x)**2 + (y-cen_y)**2)) # 一个径向基函数，根据输入的点 (x, y) 和中心点 (cen_x, cen_y) 返回一个高斯分布的值。
     
 #%% outputs of 2- and 3-layer networks 
 # figure 5.3a
@@ -91,7 +91,7 @@ x = arange(-8.0, 8.0, 0.1)
 y = arange(-8.0, 8.0, 0.1)
 
 # grid of point
-X, Y = np.meshgrid(x, y)
+X, Y = np.meshgrid(x, y) # 生成网格点坐标
 
 fig = plt.figure()
 
@@ -128,7 +128,6 @@ plt.plot(x,y, color = "black")
 plt.xlabel("x")
 plt.ylabel("y = max{0,x}")
 plt.title("Fig 5.5b \nA novel transformation function", {"fontsize": font_size})
-
 
 #%% figure 5.7 Radial basis functions
 x_center, y_center = 1, 0
