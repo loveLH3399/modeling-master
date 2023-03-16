@@ -7,6 +7,7 @@ written for TF2
 
 MNIST digit classification; could a standard N-layer network solve this task...?
 """
+pip install tensorflow
 
 #%% imports and initializations
 import tensorflow as tf
